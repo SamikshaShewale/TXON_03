@@ -1,42 +1,133 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> To-do list</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+*{margin: 0;padding: 0;}
+body{
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    background-image: url("\https://www.psdgraphics.com/wp-content/uploads/2022/06/luxury-black-wood-texture-768x512.jpg");
+    min-height: 100vh;
+    color: #fff;
+    font-size: 1.3rem;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+button, form input {
+    outline: none;
+}
+.header, .todo-area {
+    width: 100%;
+    text-align: center;
+}
+
+.header, form {
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form input, form button {font-size: 1.5rem;padding: 0.5rem;border: none;background: #fff;}
+
+form button {
+    color: #217dd8;
+    transition: .3s;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #217dd8;
+    color: #fff;
+}
+
+.todo li {
+    flex: 1;
+    padding-left: 0.5rem;
+}
+
+ul#todolist {list-style: none;min-width: 30%;}
+
+.todo-container {justify-content: center;align-items: center;display: flex;}
+
+.todo {
+    background: #fff;
+    margin: 0.5rem;
+    color: #000;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+    transition: all 0.5s ease;
+}
     
-</head>
-<body>
-        <div class="header">
-            <h1>Keep Going !</h1>
-        </div>
-        <div class="todo-area">
-            <form action="">
-                <input type="text" name="text" id="todoinput" placeholder="Enter New Task">
-                <button id="todobutton" type="submit">
-                    <i class="fas fa-plus-square"></i>
-                </button>
-                <div id="select">
-                    <select name="todos" id="todoselect">
-                        <option value="all">All</option>
-                        <option value="completed">Completed</option>
-                        <option value="uncompleted">Active</option>
-                    </select>
-                </div>
-            </form>
-        </div>
-        <div class="todo-container">
-            <ul id="todolist"></ul>
-        </div>
 
+.check-btn, .trash-btn {
+    float: right;
+    font-size: 1rem;
+    border: none;
+    background: #bec917;
+    color: #fff;
+    padding: 0.6rem;
+    cursor: pointer;
+    transition: .3s;
+}
 
-        <script src="script.js"></script>
+button.trash-btn {
+    background: #f04a4a;
+}
 
-  
+button.check-btn {
+    background: #36a036;
+}
+
+button.trash-btn:hover {
+    background: red;
+}
+
+button.check-btn:hover {
+    background: green;
+}
+
+.fa-check, .fa-trash{
+    pointer-events: none;
+}
+
+.fall{
+    transform: translateX(0rem) rotateX(0deg);
+    opacity: 0;
+    transition: 0s;
+}
+.completed{
+    text-decoration: line-through;
+    opacity: 0.5;
+    transition: 0.1s;
+}
+
+select{
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    outline: none;
+    padding: 0.9rem;
+    width: 10rem;
+    cursor: pointer;
    
-
-</body>
-</html>
+}
+#select{
+    margin: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+#select::after{
+    content: "\25BC";
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #217dd8;
+    color: #fff;
+    pointer-events: none;
+    padding: 0.7rem;
+    transition: all 0.3s ease;
+}
+#select:hover::after{
+    background: #fff;
+    color: #217dd8;
+}
